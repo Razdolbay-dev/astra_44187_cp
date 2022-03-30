@@ -1,0 +1,41 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          astra4
+# Required-Start:    $network $syslog $named
+# Required-Stop:     $network $syslog $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Astra TV streaming software
+### END INIT INFO
+
+if [ -z "$1" ] ; then
+    echo "Usage: $0 [start|stop|restart]"
+    exit 0
+fi
+
+#PORT="8180"
+APP="astra"
+BINFILE="/usr/bin/$APP"
+PIDFILE="/var/run/$APP.pid"
+LOGFILE="/var/log/$APP.log"
+CFGFILE="/etc/astra/lua/astra.lua"
+
+if [ "$1" = "start" ]; then
+    if [ -f $PIDFILE ]; then
+        sudo kill $(cat $PIDFILE)
+        sleep 2
+    fi
+    #ulimit -n 65536
+    $BINFILE $CFGFILE --pid $PIDFILE --log $LOGFILE --no-stdout &
+elif [ "$1" = "stop" ]; then
+    if [ -f $PIDFILE ]; then
+        sudo kill -9 $(cat $PIDFILE)
+    fi
+elif [ "$1" = "restart" ]; then
+    $0 start
+else
+    exec $0
+fi
+
+exit 0
+
