@@ -8,3 +8,27 @@
 ```
 Установка простая:
 
+```
+apt-get update && apt-get upgrade -y
+```
+```
+apt install -y nginx mysql-server php-fpm php-mysql php
+```
+далее: 
+```
+mysql -u <Users> -p<Passwd>
+В мускуле:
+create database astra;
+quit
+```
+Потом:
+```
+cd /var/www/html
+mysql  -u <Users> -p<Passwd> astra < astra.sql
+```
+В Sudoers еще надо внести разрешения для выполнения скрипта:
+```
+mcedit /etc/sudoers
+www-data        ALL=(root) NOPASSWD:/etc/init.d/astra4
+```
+Все фалы лежат в ``src``
