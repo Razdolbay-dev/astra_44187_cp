@@ -32,3 +32,4 @@ mcedit /etc/sudoers
 www-data        ALL=(root) NOPASSWD:/etc/init.d/astra4
 ```
 Все фалы лежат в ``src``
+Если есть идеи подкиньте https://t.me/fant1kus
