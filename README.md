@@ -31,5 +31,7 @@ mysql  -u <Users> -p<Passwd> astra < astra.sql
 mcedit /etc/sudoers
 www-data        ALL=(root) NOPASSWD:/etc/init.d/astra4
 ```
-Все фалы лежат в ``src``
-Если есть идеи подкиньте https://t.me/fant1kus
+Все фалы лежат в ``src``. 
+```Если есть идеи подкиньте https://t.me/fant1kus ```
+Любая критика приветствуется. Писал для себя для удобства, может что то не доглядел. Буду править и поддерживать репу пока возможно
+Любая 
